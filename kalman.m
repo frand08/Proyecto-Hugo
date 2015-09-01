@@ -30,13 +30,10 @@ for i=1:N
     K = P*H'*(inv(S));
     x = x + (K*Y);
     P = (I - (K*H))*P;
-    b(i)=x(1);                 %ESTE ES MI ESTADO ESTIMADO ACTUAL
+    b(i)=x(1);                 %Salida
     
     % Prediction
     x = (F*x + B*u);
-    a(i)=x(1);
-    Acc_x(i)=x(2)/dt*cos(x(1)/180*pi);
-    pos(i) = (Acc_x(i)-g)*dt^2/2;
     P = F*P*F';
     
 end

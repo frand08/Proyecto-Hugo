@@ -1,6 +1,6 @@
 N=10000;
 t=1:N;
-measurements = (t)  + 10*randn(1,N); % Angulo entregado por el accel
+measurements = (t)  + 1000*randn(1,N); % Angulo entregado por el accel
 measurements = measurements';
 N = length(measurements);
 
@@ -27,14 +27,14 @@ for i=1:N
     K = P*H'*(inv(S));
     x = x + (K*Y);
     P = (I - (K*H))*P;
-    b(i)=x(1);                          % ACA TENGO QUE TOMAR
+    b(i)=x(1);                  %Salida
+    
     % Prediction
     x = (F*x + B*u);
-    a(i)=x(1);                          % ACA NO!!! SERIA LA PROXIMA ESTA
     P = F*P*F';
     
 end
 subplot(211);
-plot(b);
+plot(measurements);
 subplot(212);
-plot(a);
+plot(b);
