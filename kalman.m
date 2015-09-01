@@ -30,7 +30,7 @@ for i=1:N
     K = P*H'*(inv(S));
     x = x + (K*Y);
     P = (I - (K*H))*P;
-    b=x(1);                 %ESTE ES MI ESTADO ESTIMADO ACTUAL
+    b(i)=x(1);                 %ESTE ES MI ESTADO ESTIMADO ACTUAL
     
     % Prediction
     x = (F*x + B*u);
